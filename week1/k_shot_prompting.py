@@ -6,8 +6,13 @@ load_dotenv()
 
 NUM_RUNS_TIMES = 5
 
-# TODO: Fill this in!
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """You read a single word from the user and must reply with only that word spelled backwards.
+No punctuation, no quotes, no explanations—only the reversed word.
+Examples (input -> output):
+apple -> elppa
+banana -> ananab
+history -> yrotsih
+httpstatus -> sutatsptth"""
 
 USER_PROMPT = """
 Reverse the order of letters in the following word. Only output the reversed word, no other text:
