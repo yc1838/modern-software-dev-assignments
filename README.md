@@ -25,3 +25,8 @@ These steps work with Python 3.12.
    ```bash
    poetry install --no-interaction
    ```
+
+5. Run actual test
+   ```bash
+   poetry run pytest
+   ```
