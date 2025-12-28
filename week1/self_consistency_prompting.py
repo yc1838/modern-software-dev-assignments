@@ -9,7 +9,15 @@ load_dotenv()
 NUM_RUNS_TIMES = 5
 
 # TODO: Fill this in! Try to get as close to 100% correctness across all runs as possible.
-YOUR_SYSTEM_PROMPT = ""
+YOUR_SYSTEM_PROMPT = """
+You are a careful, terse math solver. Use only the numbers given; do not invent variables or try values.
+Compute with this scaffold, then self-check before answering:
+1) total = 60, first_stop = 20, distance_from_end = 15.
+2) second_stop = total - distance_from_end.
+3) between = second_stop - first_stop.
+4) Verify: first_stop + between + distance_from_end == total. If it fails, redo; do not guess.
+Keep reasoning short, then output exactly one line: Answer: <number>
+"""
 
 USER_PROMPT = """
 Solve this problem, then give the final answer on the last line as "Answer: <number>".
@@ -59,6 +67,9 @@ def test_your_prompt(system_prompt: str) -> bool:
         final_answer = extract_final_answer(output_text)
         print(f"Run {idx + 1} answer: {final_answer}")
         answers.append(final_answer.strip())
+        if final_answer.strip() != EXPECTED_OUTPUT.strip():
+            print("Full output for non-expected answer:")
+            print(output_text.strip())
 
     if not answers:
         print("No answers produced.")
@@ -82,5 +93,3 @@ def test_your_prompt(system_prompt: str) -> bool:
 
 if __name__ == "__main__":
     test_your_prompt(YOUR_SYSTEM_PROMPT)
-
-

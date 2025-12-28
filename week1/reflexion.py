@@ -15,7 +15,27 @@ Keep the implementation minimal.
 """
 
 # TODO: Fill this in!
-YOUR_REFLEXION_PROMPT = ""
+YOUR_REFLEXION_PROMPT = """
+Reflect on the password based on the following requirements:
+- at least one uppercase letter
+- at least one lowercase letter
+- at least one digit
+- at least one special character (!@#$%^&*()-_)
+- at least 8 characters long
+- no whitespace
+make sure the function implements is_valid_password based on these rules. 
+
+Example:
+print(is_valid_password("password123!"))  # Returns: False (missing uppercase)
+print(is_valid_password("PASSWORD123!"))  # Returns: False (missing lowercase)
+print(is_valid_password("P@ssword"))      # Returns: False (no digit)
+print(is_valid_password("password123"))   # Returns: False (no special character)
+print(is_valid_password("P@ssw0"))        # Returns: False (less than 8 characters)
+print(is_valid_password("Password1 23!")) # Returns: False (has whitespace)
+print(is_valid_password("password123!"))  # Returns: True (all requirements met)
+
+
+"""
 
 
 # Ground-truth test suite used to evaluate generated code
